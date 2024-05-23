@@ -1,0 +1,25 @@
+﻿id;Nombre_cientifico;Dificultad;Ubicación;Estatura;Expectativa_vida;Frecuencia_Riego;Tolera_mediterráneo_seco;Adecuado_para_mascotas;Estilo_decorativo;Sensación
+1;Chlorophytum comosum;0;Interior;60;20;2;1;1;Escandinavo;Frío
+2;Nephrolepis exaltata;1;Interior;90;7;3;0;0;Tropical;Cálido
+3;Monstera deliciosa;2;Interior;250;40;2;0;0;Bohemio;Cálido
+4;Peperomia obtusifolia;1;Interior;30;5;1;0;1;Moderno;Frío
+5;Fittonia albivenis;2;Interior;20;2;3;0;1;Contemporáneo;Ambos
+6;Schlumbergera truncata;2;Interior;45;20;1;0;1;Rústico;Cálido
+7;Saintpaulia ionantha;2;Interior;15;2;2;0;1;Vintage;Cálido
+8;Sansevieria trifasciata;0;Interior;90;15;0;1;0;Minimalista;Frío
+9;Phalaenopsis spp.;3;Interior;60;7;2;0;0;Elegante;Cálido
+10;Crassula ovata;1;Interior;120;20;0;1;1;Zen;Frío
+11;Aloe vera;1;Interior;90;15;0;1;0;Natural;Frío
+12;Haworthia spp.;1;Interior;20;30;0;1;1;Minimalista;Frío
+13;Aeonium spp.;1;Exterior;90;2;1;1;1;Bohemio;Cálido
+14;Kalanchoe blossfeldiana;1;Interior;45;5;1;1;0;Clásico;Cálido
+15;Philodendron spp.;2;Interior;100;15;2;0;0;Tropical;Cálido
+16;Syngonium podophyllum;1;Interior;90;15;2;0;0;Moderno;Frío
+17;Hedera helix;2;Exterior;300;7;2;0;0;Clásico;Cálido
+18;Philodendron hederaceum;2;Interior;50;15;2;0;0;Tropical;Cálido
+19;Dracaena marginata;1;Interior;200;12;1;0;0;Contemporáneo;Ambos
+20;Lavandula angustifolia;2;Exterior;90;7;1;1;0;Provenzal;Cálido
+21;Hosta spp.;1;Exterior;90;15;2;0;1;Clásico;Cálido
+22;Pelargonium spp.;1;Exterior;60;2;2;1;0;Mediterránep;Cálido
+23;Fuchsia spp.;1;Exterior;120;2;2;0;1;Victoriano;Cálido
+24;Calendula officinalis;1;Exterior;60;1;2;1;1;Rústico;Cálido
