@@ -1,5 +1,22 @@
-import streamlit as st
+import numpy as np
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.preprocessing import StandardScaler
+import streamlit as st
+
+# Cargar el dataframe
+df = pd.read_csv('C:/Users/Ani/Desktop/BVNNY/Master/TFM/Datasets/df_final.csv', sep=',')
+
+# Normalizar las columnas numéricas
+scaler = StandardScaler()
+numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+df[numeric_columns] = scaler.fit_transform(df[numeric_columns])
+
+# Seleccionar las columnas que se usarán para calcular similitudes
+feature_columns = df.columns.difference(['Especie_planta'])
+feature_matrix = df[feature_columns].values
 
 # Diccionario de mapeo de sensaciones a tonalidades
 sensaciones_a_tonalidades = {
@@ -28,7 +45,24 @@ tonalidades_a_valores = {
     "Ambos": 1.0
 }
 
-def entrada_usuario():
+def recomendar_planta_usuario(usuario, df, feature_columns):
+    # Normalizar las características del usuario usando el mismo scaler
+    usuario_normalizado = scaler.transform([usuario])
+    
+    # Calcular la similitud del coseno entre el usuario y las plantas
+    similitudes = cosine_similarity(usuario_normalizado, feature_matrix)
+    
+    # Obtener el índice de la planta más similar
+    indice_planta_recomendada = np.argmax(similitudes)
+    
+    # Devolver la planta recomendada
+    planta_recomendada = df.iloc[indice_planta_recomendada]['Especie_planta']
+    return planta_recomendada
+
+st.title("Sistema de Recomendación de Plantas")
+
+# Usar st.form para agrupar todos los widgets
+with st.form(key='form'):
     toxic = st.slider("¿Le importa que la planta sea tóxica?", 0, 1, 0)
     conocimiento = st.slider("¿Cuánto sabe sobre plantas?", 0, 3, 0)
     tiempo = st.slider("¿Cuánto tiempo libre tiene?", 0, 3, 0)
@@ -50,22 +84,15 @@ def entrada_usuario():
     sensacion_tonalidad = sensaciones_a_tonalidades.get(sensacion_input, "Ambos")
     sensacion = tonalidades_a_valores[sensacion_tonalidad]
 
-    return [
+    # Botón para enviar el formulario
+    submit_button = st.form_submit_button(label='Obtener recomendación')
+
+# Procesar los datos y mostrar la recomendación si se ha enviado el formulario
+if submit_button:
+    usuario = [
         toxic, conocimiento, tiempo, clima, tonos_calidos, tonos_frios, tonos_indiferente,
         adosado, apartamento, chalet, dificultad, ubicacion, estatura, riego,
         mediterraneo, mascotas, sensacion
     ]
-
-def recomendar_planta_usuario(usuario, df, feature_columns):
-    # Aquí debes implementar tu lógica de recomendación
-    return "Ejemplo de Planta"
-
-df = pd.DataFrame()  # Carga aquí tu dataframe
-feature_columns = []  # Define aquí tus columnas de características
-
-st.title("Sistema de Recomendación de Plantas")
-
-if st.button("Obtener recomendación"):
-    usuario = entrada_usuario()
     mejor_planta = recomendar_planta_usuario(usuario, df, feature_columns)
     st.write(f"La mejor planta recomendada es: {mejor_planta}")
